@@ -6,6 +6,7 @@ Simulate axonal growth in a 2D cellular-automaton world.
 
 <table>
   <tr>
+    <td><img src="final_results/250717.png" width="200"></td>
     <td><img src="final_results/250716.png" width="200"></td>
   </tr>
 </table>

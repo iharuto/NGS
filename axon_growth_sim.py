@@ -11,7 +11,7 @@ random.seed(seed)
 
 width = 1920
 height = 1080
-n_neuron_cluster = 40
+n_neuron_cluster = 50
 max_steps = 800
 
 df = ASF.get_app_locations()

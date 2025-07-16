@@ -282,20 +282,28 @@ def save_trajectory_frames(paths, repulsion, max_steps, out_dir="images"):
         # エージェントの軌跡（step_id < i のみ）
         filtered = paths[paths["step_id"] < i]
         for (pair_id, agent_id), group in filtered.groupby(["pair_id", "ID"]):
-            plt.plot(group["x"], group["y"], linewidth=0.5, color="darkred", alpha=0.5)
+            plt.plot(group["x"], group["y"], linewidth=0.25, color="darkred", alpha=0.75)
 
         # 描画要素の完全非表示化（壁紙仕様）
         plt.axis('off')
 
         # 保存（余白・ラベルなし、背景黒）
+        filename = f"{i:0{len(str(max_steps))}d}.png"
+        output_dir = os.path.join(out_dir, filename)
         plt.savefig(
-            os.path.join(out_dir, f"{i}.png"),
+            output_dir,
             bbox_inches='tight',
             pad_inches=0,
             facecolor='black',
             dpi=300
         )
         plt.close()
+
+        with Image.open(output_dir) as img:
+            palette_img = img.convert('P', palette=Image.ADAPTIVE, colors=256)
+            
+            # Save to final_results directory
+            palette_img.save(output_dir, "PNG", optimize=True)
 
 
 def create_final_result_png(max_steps, today_str, images_dir="images", output_dir="final_results"):

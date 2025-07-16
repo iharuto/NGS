@@ -8,6 +8,7 @@ from scipy.stats import multivariate_t
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 import os
+from PIL import Image
 
 
 def get_app_locations():
@@ -295,3 +296,63 @@ def save_trajectory_frames(paths, repulsion, max_steps, out_dir="images"):
             dpi=300
         )
         plt.close()
+
+
+def create_final_result_png(max_steps, today_str, images_dir="images", output_dir="final_results"):
+    """
+    Create a final result PNG from the last simulation frame.
+    
+    Parameters
+    ----------
+    max_steps : int
+        The maximum number of steps (corresponds to the final frame number)
+    today_str : str
+        The date string for the output filename
+    images_dir : str
+        Directory containing the simulation frames
+    output_dir : str
+        Directory to save the final result PNG
+    """
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Path to the final frame
+    final_frame_path = os.path.join(images_dir, f"{max_steps}.png")
+    
+    if not os.path.exists(final_frame_path):
+        print(f"Warning: Final frame {final_frame_path} not found")
+        return
+    
+    try:
+        # Load the final frame
+        with Image.open(final_frame_path) as img:
+            # Get original size
+            original_width, original_height = img.size
+            
+            # Calculate 1/4 scale dimensions
+            new_width = original_width // 4
+            new_height = original_height // 4
+            
+            # Resize to 1/4 scale
+            resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            
+            # Convert to 8-bit color (palette mode) for smaller file size
+            # First convert to RGB if not already
+            if resized_img.mode != 'RGB':
+                resized_img = resized_img.convert('RGB')
+            
+            # Convert to 8-bit palette mode
+            palette_img = resized_img.convert('P', palette=Image.ADAPTIVE, colors=256)
+            
+            # Save to final_results directory
+            output_path = os.path.join(output_dir, f"{today_str}.png")
+            palette_img.save(output_path, "PNG", optimize=True)
+            
+            # Check file size
+            file_size = os.path.getsize(output_path)
+            print(f"Final result saved: {output_path}")
+            print(f"File size: {file_size / 1024:.1f} KB")
+            print(f"Dimensions: {new_width}x{new_height}")
+            
+    except Exception as e:
+        print(f"Error creating final result PNG: {e}")

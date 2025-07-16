@@ -23,3 +23,6 @@ goal_coords = [(x, height - y) for (x, y) in goal_coord]
 paths = ASF.simulate_agent_paths_pairs(repulsion, attraction, start_coord, goal_coords, steps=max_steps, hit_repeat=1)
 
 ASF.save_trajectory_frames(paths=paths, repulsion=repulsion, max_steps=max_steps)
+
+# Create final result PNG for final_results directory
+ASF.create_final_result_png(max_steps, today_str)

@@ -54,6 +54,8 @@ cat >> README.md << 'EOF'
 
 Run the simulation and update results:
 ```bash
+# conda create -n axon python=3.8 # for initial setup
+conda activate axon
 ./run_simulation.sh
 ```
 

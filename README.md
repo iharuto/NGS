@@ -2,10 +2,11 @@
 
 Simulate axonal growth in a 2D cellular-automaton world.
 
-## Latest Final Results
+## Gallery
 
 <table>
   <tr>
+    <td><img src="final_results/250718.png" width="200"></td>
     <td><img src="final_results/250717.png" width="200"></td>
     <td><img src="final_results/250716.png" width="200"></td>
   </tr>
@@ -15,7 +16,8 @@ Simulate axonal growth in a 2D cellular-automaton world.
 
 Run the simulation and update results:
 ```bash
-# conda create -n axon python=3.8 # for initial setup
+# conda create -n axon python=3.11 # for initial setup
+# pip install -r requirements.txt # for initial setup
 conda activate axon
 ./run_simulation.sh
 ```

@@ -13,7 +13,7 @@ cat > README.md << 'EOF'
 
 Simulate axonal growth in a 2D cellular-automaton world.
 
-## Latest Final Results
+## Gallery
 
 EOF
 
@@ -54,7 +54,8 @@ cat >> README.md << 'EOF'
 
 Run the simulation and update results:
 ```bash
-# conda create -n axon python=3.8 # for initial setup
+# conda create -n axon python=3.11 # for initial setup
+# pip install -r requirements.txt # for initial setup
 conda activate axon
 ./run_simulation.sh
 ```

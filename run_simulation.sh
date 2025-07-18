@@ -11,7 +11,8 @@ echo "Updating README.md..."
 cat > README.md << 'EOF'
 # Neuron Growth Simulation
 
-Simulate axonal growth in a 2D cellular-automaton world.
+Simulate axonal growth in a 2D cellular-automaton world. The repulsion area (blue-colored regions) are stochastically generated based on Mac desktop app locations, so that you can enjoy how neuron seeds interactively grow.
+
 
 ## Gallery
 
@@ -62,6 +63,7 @@ conda activate axon
 
 ## Environment
 
+- OS environment: M3 macOS 13.5
 - conda environment: axon
 - Required packages: see requirements.txt
 EOF

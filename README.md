@@ -7,14 +7,14 @@ Simulate axonal growth in a 2D cellular-automaton world. The repulsion area (blu
 
 <table>
   <tr>
+    <td><img src="final_results/250722.png" width="200"></td>
     <td><img src="final_results/250721.png" width="200"></td>
     <td><img src="final_results/250720.png" width="200"></td>
-    <td><img src="final_results/250719.png" width="200"></td>
   </tr>
   <tr>
+    <td><img src="final_results/250719.png" width="200"></td>
     <td><img src="final_results/250718.png" width="200"></td>
     <td><img src="final_results/250717.png" width="200"></td>
-    <td><img src="final_results/250716.png" width="200"></td>
   </tr>
 </table>
 
